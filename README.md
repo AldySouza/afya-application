@@ -5,17 +5,16 @@
 
 ## Sobre:
 
-  Desafio proposto na [1ª Edição Afya Labs](https://afya.gama.academy), programa de treinamento da [Gama Academy](https://www.gama.academy/) em parceria com [Afya Educaional](https://afya.com.br/).
+  Desafio proposto na [1ª Edição Afya Labs](https://afya.gama.academy), programa de treinamento da [Gama Academy](https://www.gama.academy/) em parceria com [Afya Educacional](https://afya.com.br/).
 
 #### Integrantes do grupo:
 
-- Adriano Rocha Campos
 - [Ailson Pacheco Lima Junior](https://github.com/ailsonjr)
 - [Aldicleiry de Souza Silva](https://github.com/AldySouza)
 - [Aline Branco](https://github.com/alinebw)
 - [Anderson Praxedes](https://github.com/andersonprax)
 - [Breno Cota](https://github.com/brenogcota)
-- Eduardo Matheus Rodrigues da Silva
+- [Eduardo Matheus Rodrigues da Silva](https://github.com/EduardoRS78)
 
 ## Desafio Atendimento Médico \ Prontuário
 Criar um sistema para um consultório controlar o cadastro de seus clientes, atendimentos e prontuário dos pacientes.
