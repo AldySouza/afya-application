@@ -1,5 +1,6 @@
 export interface IProps {
-    onChange: (e: any) => void,
+    onChange?: (e: any) => void,
     placeHolder?: string,
-    inputType?: string
+    inputType?: string,
+    Name?: string,
 }

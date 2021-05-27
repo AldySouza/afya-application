@@ -3,9 +3,9 @@ import React from 'react';
 import { InputComponent } from './styles';
 import { IProps } from './interfaces';
 
-const Input: React.FC<IProps> = ({ onChange, placeHolder, inputType }) => {
+const Input: React.FC<IProps> = ({ onChange, placeHolder, inputType, Name }) => {
     return (
-        <InputComponent type={inputType} onChange={onChange} placeholder={placeHolder} />
+        <InputComponent type={inputType} onChange={onChange} placeholder={placeHolder} name={Name}/>
     )
 }
 
