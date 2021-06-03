@@ -1,4 +1,4 @@
 export interface IProps {
-    onClick: (e: any) => void,
+    onClick?: (e: any) => void,
     Outline?: boolean
 }

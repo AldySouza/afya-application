@@ -1,21 +1,19 @@
 import styled from 'styled-components';
 
-export const HeaderComponent = styled.div`
+export const FooterComponent = styled.div`
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
+  background-color: #13132B;
+  color: white;
 
-  height: 70px;
-  padding: 0 30px;
+  height: 200px;
+  padding: 30px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.06);
 
-  @media (max-width: 959px) {
-    & {
-      padding: 0 10px;
-    }
+  a {
+    color: white;
   }
-
-
   .nav {
     display: flex;
     align-items: center;
