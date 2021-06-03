@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 
@@ -46,9 +47,11 @@ const Header: React.FC = () => {
                         </select>
                    </strong>
                 </span>
-                <ButtonOutline onClick={handleClick}>
-                    Entrar
-                </ButtonOutline>
+                <Link to="/login">
+                    <ButtonOutline>
+                        Entrar
+                    </ButtonOutline>
+                </Link>
            </div>
         </HeaderComponent>
     )

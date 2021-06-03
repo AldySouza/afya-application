@@ -32,9 +32,11 @@ export const Container = styled.div`
       @media (max-width: 959px) {
           & {
               width: 20%;
-            h1, svg { display: none}
+
+              h1, svg { display: none}
           }
       }
+
   }
 
   .rightContainer {
@@ -52,7 +54,7 @@ export const Container = styled.div`
         box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.29);
 
         width: 392px;
-        height: 336px;
+        height: auto;
         padding: 20px;
         text-align: center;
 
