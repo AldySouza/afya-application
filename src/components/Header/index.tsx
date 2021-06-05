@@ -25,7 +25,9 @@ const Header: React.FC = () => {
 
     return (
         <HeaderComponent>
-           <Logo />
+            <Link to="/">
+                <Logo />
+            </Link>
 
            <div className="nav">
                 <Pin />
