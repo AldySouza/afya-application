@@ -23,10 +23,6 @@ const Header: React.FC = () => {
         setStates(states.data);
     }
 
-    const handleClick = () => {
-        console.log('button clicked')
-    }
-
     return (
         <HeaderComponent>
            <Logo />

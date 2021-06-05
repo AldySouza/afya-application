@@ -13,4 +13,9 @@ export const ButtonComponent = styled.button`
     cursor: pointer;
     transition: all .6s;
   }
+
+  &:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
 `;
