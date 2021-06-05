@@ -8,6 +8,7 @@ export const HeaderComponent = styled.div`
   height: 70px;
   padding: 0 30px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.06);
+  background: #FFF;
 
   @media (max-width: 959px) {
     & {
