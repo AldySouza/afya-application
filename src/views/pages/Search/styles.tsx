@@ -10,8 +10,8 @@ export const SearchBar = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    width: 80vw;
-    margin: 1.25rem auto;
+    max-width: 41.8125rem;
+    margin: 1.25rem auto 6.25rem;
     padding: 1rem 1.5rem;
     border-radius: 4px;
     box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.2);

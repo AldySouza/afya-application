@@ -11,12 +11,12 @@ const Slider: React.FC<IProps> = ({ images }) => {
 
   const handleSlidePrev = () => {
       const lastIndex = images.length -1;
-      current != 0 ? setCurrent(current-1) : setCurrent(lastIndex);
+      current !== 0 ? setCurrent(current-1) : setCurrent(lastIndex);
   }
 
   const handleSlideNext = () => {
     const lastIndex = images.length -1;
-      current != lastIndex ? setCurrent(current+1) : setCurrent(0);
+      current !== lastIndex ? setCurrent(current+1) : setCurrent(0);
   }
   return (
       <Wrapper>
@@ -30,7 +30,7 @@ const Slider: React.FC<IProps> = ({ images }) => {
                 images.map((item, index) => {
                     return (
                         <Item onClick={() => setCurrent(index)}
-                            style={current == index ? {display: 'block'} : {display: 'none'}}
+                            style={current === index ? {display: 'block'} : {display: 'none'}}
                         >
                             <img src={item} alt="" />
                         </Item>
@@ -46,7 +46,7 @@ const Slider: React.FC<IProps> = ({ images }) => {
         <div className="dots">
             {images.map((_, index) => {
                 return <div className="dot" onClick={() => setCurrent(index)}
-                            style={current == index ? {background: '#D40054'} : { background: '#ccc'}}
+                            style={current === index ? {background: '#D40054'} : { background: '#ccc'}}
                         ></div>
             })
             }
