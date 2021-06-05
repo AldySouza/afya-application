@@ -7,7 +7,8 @@ export const Container = styled.div`
 
     margin: .625rem 0;
     max-width: 418px;
-    margin-left: 2vw;
+    margin-left: auto;
+    margin-right: 2vw;
 
     ._card {
 
@@ -22,10 +23,24 @@ export const Container = styled.div`
 
         &-image {
             margin-right: 0.5rem;
+            width: 181px;
+            height: 98px;
+            object-fit: cover;
+            background: #ccc;
         }
 
         &-location {
             padding: 1rem .5rem;
+            
+            p { color: #666; line-height: 1.5rem}
+            strong { color: #333}
+        }
+
+        &-info {
+            margin-top: .625rem;
+            
+            span { color: #ccc; line-height: 1.5rem}
+            h4 { color: #333}
         }
     }
 

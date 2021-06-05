@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const FooterComponent = styled.footer`
+export const FooterComponent = styled.div`
   display: flex;
   align-items: start;
   justify-content: space-between;
