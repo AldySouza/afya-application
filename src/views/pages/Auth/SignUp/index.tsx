@@ -22,9 +22,9 @@ const SignUp: React.FC = () => {
     return (
         <Container>
             <div className="leftContainer">
-                <h1>Crie sua conta<br/>
-                    e aproveite<br/>
-                    todos os<br/>
+                <h1>Crie sua conta<br />
+                    e aproveite<br />
+                    todos os<br />
                     benefícios
                 </h1>
                 <LogoXG />
@@ -37,7 +37,10 @@ const SignUp: React.FC = () => {
                     <Input inputType="email" placeHolder="Digite seu e-mail" Name="email" />
                     <Input inputType="password" placeHolder="Digite sua senha" Name="password" />
 
-                    <Button onClick={(e) => handleForm(e)}>Cadastrar</Button>
+                    <Link to="/registro">
+                        <Button onClick={(e) => handleForm(e)}>Cadastrar</Button>
+                    </Link>
+
 
                     <span>Já tem cadastro? <Link to="/login"><strong>Entrar</strong></Link></span>
                 </form>
