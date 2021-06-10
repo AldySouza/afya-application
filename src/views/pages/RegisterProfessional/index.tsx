@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Container } from '../RegisterProfessional/styles';
+import { Container } from './styles';
 import Button from '../../../components/Button';
 import Input from '../../../components/Input';
 
 import { ReactComponent as LogoXG } from '../../../assets/logo-xg.svg';
 
-const bloodTypes = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
-
-const RegisterClient: React.FC = () => {
+const RegisterProfessional: React.FC = () => {
   const [form] = useState({});
 
   // const handleForm = (e: any) => {
@@ -26,13 +24,10 @@ const RegisterClient: React.FC = () => {
       <div className="leftContainer">
         <form name="signin" className="signinForm">
           <LogoXG />
-          <Input inputType="text" placeHolder="Digite seu CPF" Name="cpf" />
+          <Input inputType="text" placeHolder="Digite seu CRM" Name="crm" />
           <Input inputType="text" placeHolder="Digite seu celular" Name="celular" />
-          <Input inputType="email" placeHolder="Digite um telefone" Name="phone" />
-
-          <select name="blood-type" id="">
-            { bloodTypes.map((type) => <option value={type}>{ type }</option>) }
-          </select>
+          <Input inputType="text" placeHolder="Digite um telefone" Name="phone" />
+          <Input inputType="text" placeHolder="Digite sua profissão" Name="profession" />
 
           <Link to="/registro-endereco">
             <Button>Próximo</Button>
@@ -54,4 +49,4 @@ const RegisterClient: React.FC = () => {
   );
 }
 
-export default RegisterClient;
+export default RegisterProfessional;
