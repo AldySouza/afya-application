@@ -13,7 +13,7 @@ export const Container = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: center;
-      text-align: left;
+      text-align: right;
 
       background: #13132B;
 
@@ -64,7 +64,7 @@ export const Container = styled.div`
             margin-bottom: 27px;
         }
 
-        input, button, checkbox-type {
+        input, button {
             margin: 10px 0 0;
             width: 100%;
         }
@@ -80,14 +80,6 @@ export const Container = styled.div`
                 color: rgba(212, 0, 84, 1);
                 cursor: pointer;
             }
-        }
-
-        .checkbox-type {
-            padding: 10px;
-            justify-content: center;
-            align-itens: center;
-            display: flex;
-            width: 80%;
         }
     }
     @media (max-width: 959px) {

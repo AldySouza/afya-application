@@ -7,36 +7,34 @@ import Input from '../../../components/Input';
 
 import { ReactComponent as LogoXG } from '../../../assets/logo-xg.svg';
 
+const bloodTypes = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
 
-const Register: React.FC = () => {
+const RegisterClient: React.FC = () => {
   const [form] = useState({});
 
   // const handleForm = (e: any) => {
   //   e.preventDefault();
-
+  
   //   const { username, email, password } = document.forms[0];
 
   //   console.log(username.value, email.value, password.value);
   // }
-
+  
   return (
     <Container>
 
       <div className="leftContainer">
         <form name="signin" className="signinForm">
           <LogoXG />
-          <Input inputType="text" placeHolder="Digite seu nome completo" Name="name" />
-          <Input inputType="text" placeHolder="Digite um username" Name="username" />
-          <Input inputType="email" placeHolder="Digite seu e-mail" Name="email" />
-          <Input inputType="email" placeHolder="Digite confirme seu e-mail" Name="confirm-email" />
-          <Input inputType="password" placeHolder="Digite uma senha" Name="password" />
-          <Input inputType="password" placeHolder="Digite confirme sua senha" Name="password" />
-          <div className="checkbox-type">
-            <input type="checkbox" name="cliente" id="cliente" />Cliente
-            <input type="checkbox" name="especialista" id="especialista" />Especialista
-          </div>
+          <Input inputType="text" placeHolder="Digite seu CPF" Name="cpf" />
+          <Input inputType="text" placeHolder="Digite seu celular" Name="celular" />
+          <Input inputType="email" placeHolder="Digite um telefone" Name="phone" />
 
-          <Link to="/registro-cliente">
+          <select name="blood-type" id="">
+            { bloodTypes.map((type) => <option value={type}>{ type }</option>) }
+          </select>
+
+          <Link to="/registro-endereco">
             <Button>Próximo</Button>
           </Link>
 
@@ -56,4 +54,4 @@ const Register: React.FC = () => {
   );
 }
 
-export default Register;
+export default RegisterClient;

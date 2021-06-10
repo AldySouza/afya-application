@@ -38,7 +38,7 @@ const SignUp: React.FC = () => {
                     <Input inputType="password" placeHolder="Digite sua senha" Name="password" />
 
                     <Link to="/registro">
-                        <Button onClick={(e) => handleForm(e)}>Cadastrar</Button>
+                        <Button>Cadastrar</Button>
                     </Link>
 
 
