@@ -6,6 +6,7 @@ import Button from '../../../components/Button';
 import Input from '../../../components/Input';
 
 import { ReactComponent as LogoXG } from '../../../assets/logo-xg.svg';
+import Select from '../../../components/Select';
 
 const bloodTypes = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
 
@@ -30,9 +31,9 @@ const RegisterClient: React.FC = () => {
           <Input inputType="text" placeHolder="Digite seu celular" Name="celular" />
           <Input inputType="email" placeHolder="Digite um telefone" Name="phone" />
 
-          <select name="blood-type" id="">
+          <Select Name="blood-type" >
             { bloodTypes.map((type) => <option value={type}>{ type }</option>) }
-          </select>
+          </Select>
 
           <Link to="/registro-endereco">
             <Button>Próximo</Button>

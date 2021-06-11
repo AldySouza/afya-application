@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-export const SelectComponent = styled.select`
+export const OptionComponent = styled.select`
   background: var(--primary);
   color: #fff;
   border-radius: 5px;
   padding: 10px 15px;
-  margin-top: 15px;
+  margin: 0 5px;
   font-weight: 600;
 
   &:hover {

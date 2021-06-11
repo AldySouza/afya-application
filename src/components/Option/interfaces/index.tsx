@@ -1,4 +1,4 @@
 export interface IProps {
-    onChange?: (e: any) => void,
+    Value?: string,
     Name?: string,
 }
