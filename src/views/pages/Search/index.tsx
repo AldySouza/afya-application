@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+// import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import Leaflet from "leaflet";
 
 import Header from '../../../components/Header';
@@ -62,7 +62,7 @@ const Search: React.FC = () => {
 
 
           <main className="_main-container">
-            <div id="page-map">
+            {/* <div id="page-map">
               <MapContainer
                   center={location}
                   zoom={15}
@@ -78,7 +78,7 @@ const Search: React.FC = () => {
                     ></Marker>
           
                 </MapContainer>
-            </div>
+            </div> */}
 
             <div>
               <Card name="Marcos Alves" profession="Ortopedista" address="Rua Carlos Prates" />
