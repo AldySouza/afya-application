@@ -8,6 +8,7 @@ import Button from '../../../../components/Button';
 import { ReactComponent as LogoXG } from '../../../../assets/logo-xg.svg';
 import { AxiosHttpClient } from '../../../../helpers/httpClient/ajaxAdapter';
 import { baseURL } from '../../../../services/Utils';
+import Validator from '../../../../helpers/Validator';
 
 const SignUp: React.FC = () => {
     const [error, setError] = useState({
@@ -20,7 +21,11 @@ const SignUp: React.FC = () => {
 
         const { username, email, password } = document.forms[0];
 
-        console.log(username.value, email.value, password.value)
+        if(Validator.isEmpty([username.value, email.value, password.value])) {
+            const error = {message: 'Verifique se preencheu todos os campos', isError: true };
+            handleError(error);
+            return;
+        }
 
         const http = new AxiosHttpClient();
         const { body, statusCode } = await http.request({

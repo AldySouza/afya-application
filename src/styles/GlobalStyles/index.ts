@@ -21,6 +21,16 @@ export default createGlobalStyle`
     scroll-behavior: smooth;
   }
 
+  .input {
+    &-error {
+      border: 1px solid #D40054;
+    }
+
+    &-success {
+      border: 1px solid green;
+    }
+  }
+
   .error {
     padding: 10px;
     background: red;
@@ -35,6 +45,19 @@ export default createGlobalStyle`
       background: red;
       opacity: .6;
       cursor: pointer;
+    }
+
+    animation-name: slidein;
+    animation-duration: 2s;
+  }
+
+  @keyframes slidein {
+    from {
+      right: -100%;
+    }
+
+    to {
+      right: 10px;
     }
   }
 `
