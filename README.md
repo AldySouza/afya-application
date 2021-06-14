@@ -9,7 +9,6 @@
 
 #### Integrantes do grupo:
 
-- Adriano Rocha Campos
 - [Ailson Pacheco Lima Junior](https://github.com/ailsonjr)
 - [Aldicleiry de Souza Silva](https://github.com/AldySouza)
 - [Aline Branco](https://github.com/alinebw)

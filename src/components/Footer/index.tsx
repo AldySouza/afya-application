@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
     <FooterComponent>
       <Logo />
       <ul>
-        Sobre
+        <strong>Sobre</strong>
          <li><a href="https://afya.com.br/nossa-historia" target="blank">Nossa História</a></li>
         <li><a href="https://afya.com.br/nossa-marca" target="blank">Nossa Marca</a></li>
         <li><a href="https://afya.com.br/cultura-e-gente" target="blank">Cultura e Gente</a></li>

@@ -28,6 +28,7 @@ const FindSpecialist: React.FC = () => {
                         <option value="cardiaco">Cardíaco</option>
                    </select>
                    <select name="tipo" onChange={(e) => setType(e.target.value)}>
+                        <option>Tipo</option>
                         <option value="telemedicina">Telemedicina</option>
                         <option value="presencial">Presencial</option>
                     </select>
