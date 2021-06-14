@@ -52,7 +52,7 @@ const Sign: React.FC = () => {
             localStorage.setItem('@token', token);
             localStorage.setItem('@user', JSON.stringify(user));
 
-            window.location.href = '/dash';
+            window.location.href = '/';
         } catch(err) {
             console.log('An error occured');
         }
