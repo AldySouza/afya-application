@@ -20,4 +20,21 @@ export default createGlobalStyle`
   html{
     scroll-behavior: smooth;
   }
+
+  .error {
+    padding: 10px;
+    background: red;
+    border-radius: 4px;
+    color: #FFF;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    opacity: 1;
+
+    &:hover {
+      background: red;
+      opacity: .6;
+      cursor: pointer;
+    }
+  }
 `

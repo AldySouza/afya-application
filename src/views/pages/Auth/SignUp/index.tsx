@@ -6,18 +6,57 @@ import Input from '../../../../components/Input';
 import Button from '../../../../components/Button';
 
 import { ReactComponent as LogoXG } from '../../../../assets/logo-xg.svg';
+import { AxiosHttpClient } from '../../../../helpers/httpClient/ajaxAdapter';
+import { baseURL } from '../../../../services/Utils';
 
 const SignUp: React.FC = () => {
-    const [form, setForm] = useState({});
+    const [error, setError] = useState({
+        message: '',
+        isError: false
+    });
 
-    const handleForm = (e: any) => {
+    const handleForm = async (e: any) => {
         e.preventDefault();
 
         const { username, email, password } = document.forms[0];
 
-        console.log(username.value, email.value, password.value);
+        console.log(username.value, email.value, password.value)
+
+        const http = new AxiosHttpClient();
+        const { body, statusCode } = await http.request({
+            url: `${baseURL}/users`,
+            method: 'post',
+            body: {
+                "name": username.value,
+                "username": email.value,
+                "password": password.value,
+                "roles": "7a190678-008b-444d-a586-3e0c112996e2"
+            }
+        });
+
+        if(statusCode !== 200 && statusCode !== 201) {
+            handleError(body);
+            return;
+        }
+
+        try {
+            delete body.created_at;
+            localStorage.setItem('@user', JSON.stringify(body));
+
+            window.location.href = '/login';
+        } catch(err) {
+            console.log('An error occured');
+        }
+
     }
 
+    const handleError = (body: any) => {
+        setError({message: body.message, isError: true });
+
+        setTimeout(() => {
+            setError({message: '', isError: false });
+        }, 3000)
+    }
 
     return (
         <Container>
@@ -33,7 +72,8 @@ const SignUp: React.FC = () => {
             <div className="rightContainer">
                 <form name="signin" className="signinForm">
                     <LogoXG />
-                    <Input inputType="text" placeHolder="Digite seu nome" Name="username" />
+                    { error.isError  && <span className="error">{error.message}</span> }
+                    <Input placeHolder="Digite seu nome" Name="username" />
                     <Input inputType="email" placeHolder="Digite seu e-mail" Name="email" />
                     <Input inputType="password" placeHolder="Digite sua senha" Name="password" />
 

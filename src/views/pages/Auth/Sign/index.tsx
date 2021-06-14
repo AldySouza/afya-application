@@ -5,17 +5,57 @@ import { Container } from './styles';
 import Input from '../../../../components/Input';
 import Button from '../../../../components/Button';
 
+import { AxiosHttpClient } from '../../../../helpers/httpClient/ajaxAdapter';
+
 import { ReactComponent as LogoXG } from '../../../../assets/logo-xg.svg';
+import { baseURL } from '../../../../services/Utils';
 
 const Sign: React.FC = () => {
-    const [form, setForm] = useState({});
+    const [error, setError] = useState({
+        message: '',
+        isError: false
+    });
 
-    const handleForm = (e: any) => {
+    const handleForm = async (e: any) => {
         e.preventDefault();
 
-        const { email, password } = document.forms[0];
+        const { username, password } = document.forms[0];
 
-        console.log(email.value, password.value);
+        const http = new AxiosHttpClient();
+        const { body, statusCode } = await http.request({
+            url: `${baseURL}/sessions`,
+            method: 'post',
+            body: {
+                "username": username.value,
+                "password": password.value
+            }
+        });
+
+        if(statusCode !== 200) {
+            handleError(body);
+            return;
+        }
+
+        try {
+            const { token, user } = body;
+            delete user.password;
+
+            localStorage.setItem('@token', token);
+            localStorage.setItem('@user', JSON.stringify(user));
+
+            window.location.href = '/dash';
+        } catch(err) {
+            console.log('An error occured');
+        }
+
+    }
+
+    const handleError = (body: any) => {
+        setError({message: body.error, isError: true });
+
+        setTimeout(() => {
+            setError({message: '', isError: false });
+        }, 3000)
     }
 
 
@@ -33,7 +73,8 @@ const Sign: React.FC = () => {
             <div className="rightContainer">
                 <form name="signin" className="signinForm">
                     <LogoXG />
-                    <Input inputType="email" placeHolder="Digite seu e-mail" Name="email" />
+                    { error.isError  && <span className="error">{error.message}</span> }
+                    <Input inputType="email" placeHolder="Digite seu email" Name="username" />
                     <Input inputType="password" placeHolder="Digite sua senha" Name="password" />
 
                     <Button onClick={(e) => handleForm(e)}>Entrar</Button>
