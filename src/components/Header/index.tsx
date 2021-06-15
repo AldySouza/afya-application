@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import axios from 'axios';
@@ -10,9 +10,11 @@ import ButtonOutline from '../ButtonOutline';
 
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import { ReactComponent as Pin } from '../../assets/pin.svg';
+import AuthContext from '../../context/AuthContext';
 
 const Header: React.FC = () => {
     const [states, setStates] = useState<IResponse[]>([]);
+    const { user } = useContext(AuthContext);
 
     useEffect(() => {
         getStates();
@@ -30,6 +32,7 @@ const Header: React.FC = () => {
             </Link>
 
            <div className="nav">
+                { user && <span>Olá, <strong>{user.name}</strong></span>}
                 <Pin />
                 <span>Estou em 
                    <strong>
