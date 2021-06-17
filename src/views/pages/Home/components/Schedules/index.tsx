@@ -4,6 +4,7 @@ import { Container } from './styles';
 
 import Button from '../../../../../components/Button'
 import ButtonOutline from '../../../../../components/ButtonOutline'
+import { Link } from 'react-router-dom';
 
 const Schedules: React.FC = () => {
   
@@ -13,7 +14,7 @@ const Schedules: React.FC = () => {
           <div className="_schedule">
               <h3>Cardiologia - online</h3>
               <div className="buttons">
-                  <Button>Agendar</Button>
+              <Button><Link to="/agendar">Agendar</Link></Button>
                   <ButtonOutline>
                     <strong>3x de 299</strong>
                   </ButtonOutline>
@@ -23,7 +24,7 @@ const Schedules: React.FC = () => {
           <div className="_schedule">
               <h3>Emdocrinologia - online</h3>
               <div className="buttons">
-                  <Button>Agendar</Button>
+                  <Button><Link to="/agendar">Agendar</Link></Button>
                   <ButtonOutline>
                     <strong>3x de 299</strong>
                   </ButtonOutline>
@@ -33,7 +34,7 @@ const Schedules: React.FC = () => {
           <div className="_schedule">
               <h3>Dermatologia - online</h3>
               <div className="buttons">
-                  <Button>Agendar</Button>
+              <Button><Link to="/agendar">Agendar</Link></Button>
                   <ButtonOutline>
                     <strong>3x de 299</strong>
                   </ButtonOutline>
