@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { Container } from './styles';
 import Input from '../../../../components/Input';
 import Button from '../../../../components/Button';
-
 import { AxiosHttpClient } from '../../../../helpers/httpClient/ajaxAdapter';
 
 import { ReactComponent as LogoXG } from '../../../../assets/logo-xg.svg';
@@ -83,10 +82,10 @@ const Sign: React.FC = () => {
                 <form name="signin" className="signinForm">
                     <LogoXG />
                     { error.isError  && <span className="error">{error.message}</span> }
-                    <Input inputType="email" placeHolder="Digite seu email" Name="username" />
+                    <Input inputType="email" placeHolder="Digite seu email" Name="username"  />
                     <Input inputType="password" placeHolder="Digite sua senha" Name="password" />
 
-                    <Button onClick={(e) => handleForm(e)}><Link to="/">Entrar</Link></Button>
+                    <Button onClick={(e) => handleForm(e)}><Link to="/cliente">Entrar</Link></Button>
 
                     <span>Não tem cadastro? <Link to="/cadastro"><strong>Cadastrar</strong></Link></span>
                 </form>

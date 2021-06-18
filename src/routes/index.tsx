@@ -11,6 +11,7 @@ import RegisterProfessional from '../views/pages/RegisterProfessional';
 import RegisterAdress from '../views/pages/RegisterAdress';
 import CustomerSchedule from '../views/pages/CustomerSchedule';
 import Scheduling from '../views/pages/Scheduling';
+import HomeClente from '../views/pages/HomeCliente';
 
 
 const Routes: React.FC = () => {
@@ -18,6 +19,7 @@ const Routes: React.FC = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Home}/>
+        <Route path="/cliente" exact component={HomeClente}/>
         <Route path="/busca" component={Search}/>
         <Route path="/login" component={Sign}/>
         <Route path="/cadastro" component={SignUp}/>

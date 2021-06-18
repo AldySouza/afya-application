@@ -29,7 +29,16 @@ const Header: React.FC = () => {
         <Logo />
       </Link>
 
-      
+      <Link to="/Agendamentos" >
+          <ButtonOutline>
+            Agendamentos
+          </ButtonOutline>
+        </Link>
+        <Link to="/Agendar" >
+          <ButtonOutline>
+            Agendar
+          </ButtonOutline>
+        </Link>
 
       <div className="nav">
       

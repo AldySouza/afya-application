@@ -7,20 +7,66 @@ import Input from '../../../components/Input';
 
 import { ReactComponent as LogoXG } from '../../../assets/logo-xg.svg';
 import Select from '../../../components/Select';
+import { AxiosHttpClient } from '../../../helpers/httpClient/ajaxAdapter';
+import { baseURL } from '../../../services/Utils';
+import Validator from '../../../helpers/Validator';
 
 const bloodTypes = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
 
 const RegisterClient: React.FC = () => {
-  const [form] = useState({});
-  const API_KEY = "pk.eyJ1IjoiYnJlbm9nY290YSIsImEiOiJja3BrMDA5b3MwZXQ3MnBydDc4ODRuM284In0._VgelmZhtWi7lAneRalSFA";
+  const [error, setError] = useState({ message: '',
+  isError: false});
+  
 
-   const handleForm = (e: any) => {
+   const handleForm = async (e: any) => {
      e.preventDefault();
   
-   const { username, email, password } = document.forms[0];
+   const { cpf, email, phone } = document.forms[0];
 
-     console.log(username.value, email.value, password.value);
+   if(Validator.isEmpty([cpf.value, email.value, phone.value])) {
+    const error = {error: 'Verifique se preencheu todos os campos', isError: true };
+    handleError(error);
+    return;
+}
+
+const http = new AxiosHttpClient();
+const { body, statusCode } = await http.request({
+    url: `${baseURL}/sessions`,
+    method: 'post',
+    body: {
+        "cpf": cpf.value,
+        "email" : email.value,
+        "phone": phone.value
+        
+    }
+});
+
+if(statusCode !== 200) {
+    handleError(body);
+    return;
+}
+
+try {
+    const { token, user } = body;
+    delete user.password;
+
+    localStorage.setItem('@token', token);
+    localStorage.setItem('@user', JSON.stringify(user));
+
+    window.location.href = '/';
+} catch(err) {
+    console.log('An error occured');
+}
+    
    }
+
+   const handleError = (body: any) => {
+    setError({message: body.error, isError: true });
+
+    setTimeout(() => {
+        setError({message: '', isError: false });
+    }, 3000)
+}
 
 
   
@@ -30,9 +76,10 @@ const RegisterClient: React.FC = () => {
       <div className="leftContainer">
         <form name="signin" className="signinForm">
           <LogoXG />
+          { error.isError  && <span className="error">{error.message}</span> }
           <Input inputType="text" placeHolder="Digite seu CPF" Name="cpf" />
-          <Input inputType="text" placeHolder="Digite seu celular" Name="celular"  />
-          <Input inputType="email" placeHolder="Digite um telefone" Name="phone" />
+          <Input inputType="text" placeHolder="Digite seu celular" Name="phone"  />
+          <Input inputType="email" placeHolder="Digite um telefone" Name="email" />
 
           <Select Name="blood-type" >
             { bloodTypes.map((type) => <option value={type}>{ type }</option>) }
@@ -59,3 +106,7 @@ const RegisterClient: React.FC = () => {
 }
 
 export default RegisterClient;
+
+function setError(arg0: { message: any; isError: boolean; }) {
+  throw new Error('Function not implemented.');
+}
