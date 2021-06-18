@@ -12,14 +12,17 @@ const bloodTypes = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
 
 const RegisterClient: React.FC = () => {
   const [form] = useState({});
+  const API_KEY = "pk.eyJ1IjoiYnJlbm9nY290YSIsImEiOiJja3BrMDA5b3MwZXQ3MnBydDc4ODRuM284In0._VgelmZhtWi7lAneRalSFA";
 
-  // const handleForm = (e: any) => {
-  //   e.preventDefault();
+   const handleForm = (e: any) => {
+     e.preventDefault();
   
-  //   const { username, email, password } = document.forms[0];
+   const { username, email, password } = document.forms[0];
 
-  //   console.log(username.value, email.value, password.value);
-  // }
+     console.log(username.value, email.value, password.value);
+   }
+
+
   
   return (
     <Container>
@@ -28,7 +31,7 @@ const RegisterClient: React.FC = () => {
         <form name="signin" className="signinForm">
           <LogoXG />
           <Input inputType="text" placeHolder="Digite seu CPF" Name="cpf" />
-          <Input inputType="text" placeHolder="Digite seu celular" Name="celular" />
+          <Input inputType="text" placeHolder="Digite seu celular" Name="celular"  />
           <Input inputType="email" placeHolder="Digite um telefone" Name="phone" />
 
           <Select Name="blood-type" >
