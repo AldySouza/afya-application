@@ -6,6 +6,7 @@ import { Container } from './styles';
 import Button from '../../../../../components/Button'
 import ButtonOutline from '../../../../../components/ButtonOutline'
 import Modal from '../../../../../components/Modal';
+import { Link } from 'react-router-dom';
 
 interface IProps {
   title: string,
@@ -27,7 +28,7 @@ const Schedules: React.FC<IProps> = ({ title, value }) => {
           <div className="_schedule">
               <h3>{title}</h3>
               <div className="buttons">
-                  <Button onClick={() => { checkRoles() ? alert('agendado fi') : setIsOpen(true) }}>Agendar</Button>
+              <Button><Link to="/agendar">Agendar</Link></Button>
                   <ButtonOutline>
                     <strong>{value}</strong>
                   </ButtonOutline>

@@ -25,37 +25,50 @@ const Header: React.FC = () => {
         setStates(states.data);
     }
 
-    return (
-        <HeaderComponent>
-            <Link to="/">
-                <Logo />
-            </Link>
 
-           <div className="nav">
+
+  return (
+    <HeaderComponent>
+      <Link to="/">
+        <Logo />
+      </Link>
+
+      <Link to="/Agendamentos" >
+          <ButtonOutline>
+            Agendamentos
+          </ButtonOutline>
+        </Link>
+        <Link to="/Agendar" >
+          <ButtonOutline>
+            Agendar
+          </ButtonOutline>
+        </Link>
+
+        <div className="nav">
                 { user && <span>Olá, <strong>{user.name}</strong></span>}
                 <Pin />
                 <span>Estou em 
                    <strong>
-                       <select name="UF">
-                            {
-                                states.length > 0 &&
-                                states.map(state => {
-                                    return (
-                                        <option key={state.id} value={state.nome}>{state.sigla}</option>
-                                    )
-                                })
-                            }
-                        </select>
-                   </strong>
-                </span>
-                <Link to="/login">
-                    <ButtonOutline>
-                        Entrar
-                    </ButtonOutline>
-                </Link>
-           </div>
-        </HeaderComponent>
-    )
+            <select name="UF">
+              {
+                states.length > 0 &&
+                states.map(state => {
+                  return (
+                    <option key={state.id} value={state.nome}>{state.sigla}</option>
+                  )
+                })
+              }
+            </select>
+          </strong>
+        </span>
+        <Link to="/login">
+          <ButtonOutline>
+            Entrar
+          </ButtonOutline>
+        </Link>
+      </div>
+    </HeaderComponent>
+  )
 }
 
 export default Header;
