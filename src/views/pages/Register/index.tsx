@@ -31,10 +31,10 @@ const Register: React.FC = () => {
           <Input inputType="email" placeHolder="Digite confirme seu e-mail" Name="confirm-email" />
           <Input inputType="password" placeHolder="Digite uma senha" Name="password" />
           <Input inputType="password" placeHolder="Digite confirme sua senha" Name="password" />
-          <div className="checkbox-type">
-            <input type="checkbox" name="cliente" id="cliente" />Cliente
-            <input type="checkbox" name="especialista" id="especialista" />Especialista
-          </div>
+          
+            <input type="radio" name="cliente" id="cliente" />Cliente
+            <input type="radio" name="especialista" id="especialista" />Especialista
+          
 
           <Link to="/registro-cliente">
             <Button>Próximo</Button>

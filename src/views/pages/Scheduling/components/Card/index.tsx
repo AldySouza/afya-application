@@ -3,21 +3,22 @@ import React from 'react';
 import { Container } from './styles';
 
 interface IProps {
-    name: string,
-    profession: string,
+    mes: string,
+    semana: string,
     H: string,
     src?: URL,
 }
 
-const Card: React.FC<IProps> = ({ name, profession, H, src}) => {
+const Card: React.FC<IProps> = ({ mes, semana, H, src}) => {
   return (
       <Container>
           <div className="_card-left">
             <div className="_card-profile">
-            <img src={src ? `${src}` : `https://avatars.abstractapi.com/v1/?api_key=070c28c252a947e9820bd80665cf3870&name=${name}`} className="_card-image" />
+            <img src={src ? `${src}` : `https://avatars.abstractapi.com/v1/?api_key=070c28c252a947e9820bd80665cf3870&name=${mes}`} className="_card-image" />
                 <div className="_card-info">
-                    <span>{profession}</span>
-                    <h4>Dr. {name}</h4>
+                    <span>{semana}</span>
+                    <br/>
+                    <h4>{mes}</h4>
                 </div>
             </div>
             <div className="_card-location">

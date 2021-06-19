@@ -25,7 +25,7 @@ const Header: React.FC = () => {
 
   return (
     <HeaderComponent>
-      <Link to="/">
+      <Link to="/cliente">
         <Logo />
       </Link>
 
@@ -59,7 +59,7 @@ const Header: React.FC = () => {
         </span>
         <Link to="/login">
           <ButtonOutline>
-            Entrar
+            sair
           </ButtonOutline>
         </Link>
       </div>

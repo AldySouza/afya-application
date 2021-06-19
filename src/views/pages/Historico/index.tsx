@@ -1,25 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+// import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import Leaflet from "leaflet";
 
 import Header from '../../../components/HeaderSpecialista';
 import Footer from '../../../components/Footer';
-import FindSpecialist from './components/FindSpecialist';
-import Partner from './components/Partner';
-
-import { HomeComponent } from "./styles";
 import Modal from '../../../components/Modal';
-import { useState } from 'react';
 
-const HomeSpecialist: React.FC = () => {
+import { HistoComponent } from './styles';
+import Partner from './components/Partner';
+import Schedules from './components/Schedules';
+
+
+
+
+const Pacientes: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
-    <HomeComponent>
+    <HistoComponent>
       <Header />
       <button onClick={() => { setIsOpen(true)}}>click me</button>
       <section>
-        <FindSpecialist />
-        <Partner />
         
+        <Partner />
+        <Schedules />
       </section>
       <Footer />
       <Modal 
@@ -30,8 +34,8 @@ const HomeSpecialist: React.FC = () => {
         <input placeholder="TExto"/>
         <button>SEnd</button>
       </Modal>
-    </HomeComponent>
+      </HistoComponent>
   );
 }
 
-export default HomeSpecialist;
+export default Pacientes;

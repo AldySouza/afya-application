@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 // import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import Leaflet from "leaflet";
 
-import Header from '../../../components/HeaderCliente';
+import Header from '../../../components/HeaderSpecialista';
 import Footer from '../../../components/Footer';
 import Card from './components/Card';
 
@@ -10,7 +10,7 @@ import { Container, SearchBar } from './styles';
 import { ReactComponent as SearchIcon } from '../../../assets/search.svg';
 import Pin from '../../../assets/pin.svg';
 
-const Scheduling: React.FC = () => {
+const Calendario: React.FC = () => {
   const [query, setQuery] = useState(''); 
   const [hash, setHash] = useState('');
 
@@ -74,11 +74,10 @@ const Scheduling: React.FC = () => {
           
                 </MapContainer>
             </div> */}
-
             <div>
-            <Card mes="Julho" semana="quinta" H= "16h dia 22 " />
-              <Card mes="Agosto" semana="sexta" H="12h dia 07 "/>
-              <Card mes="Setembro" semana="Quarta" H="13h dia 01  " />
+            <Card name="Ana Carolina"  H=  " 02/07/2021: 8h as 12h " />
+              <Card name="Arielle Silva"  H=" 16/07/2021: 12h as 15h"/>
+              <Card name="Izabella Souza"  H=" 22/07/2021: 13h as 12h" />
             </div>
           </main>
               
@@ -87,4 +86,4 @@ const Scheduling: React.FC = () => {
   );
 }
 
-export default Scheduling;
+export default Calendario;

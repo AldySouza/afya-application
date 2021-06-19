@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 // import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import Leaflet from "leaflet";
 
-import Header from '../../../components/Header';
+import Header from '../../../components/HeaderCliente';
 import Footer from '../../../components/Footer';
 import Card from './components/Card';
 
@@ -53,7 +53,12 @@ const CustomerSchedule: React.FC = () => {
       <Container>
         <Header />
 
-       
+          <SearchBar>
+            <input type="search" name="search" onChange={(e) => fetchLocalMapBox(e.target.value)}/>
+            <div className="_search-icon">
+              <SearchIcon />
+            </div>
+          </SearchBar>
 
 
           <main className="_main-container">
@@ -76,9 +81,9 @@ const CustomerSchedule: React.FC = () => {
             </div> */}
 
             <div>
-            <Card mes="Julho" semana="quinta" H= "16h dia 22 " />
-              <Card mes="Agosto" semana="sexta" H="12h dia 07 "/>
-              <Card mes="Setembro" semana="Quarta" H="13h dia 01  " />
+            <Card name="Marcos Alves" profession="Ortopedista" H=  " 02/07/2021: 8h as 12h " />
+              <Card name="Douglas Morais" profession="Cardiologista" H=" 16/07/2021: 12h as 15h"/>
+              <Card name="Breno Cota" profession="Cardiologista" H=" 22/07/2021: 13h as 12h" />
             </div>
           </main>
               

@@ -11,7 +11,13 @@ import RegisterProfessional from '../views/pages/RegisterProfessional';
 import RegisterAdress from '../views/pages/RegisterAdress';
 import CustomerSchedule from '../views/pages/CustomerSchedule';
 import Scheduling from '../views/pages/Scheduling';
+import SchedulingSpecialista from '../views/pages/SchedulingSpecialista';
 import HomeClente from '../views/pages/HomeCliente';
+import HomeSpecialist from '../views/pages/HomeSpecialist';
+import Calendario from '../views/pages/Calendario';
+import Historico from '../views/pages/Historico';
+import Pacientes from '../views/pages/Pacientes';
+import Prontuarios from '../views/pages/Prontuarios';
 
 
 const Routes: React.FC = () => {
@@ -20,6 +26,7 @@ const Routes: React.FC = () => {
       <Switch>
         <Route path="/" exact component={Home}/>
         <Route path="/cliente" exact component={HomeClente}/>
+        <Route path="/especialista" exact component={HomeSpecialist}/>
         <Route path="/busca" component={Search}/>
         <Route path="/login" component={Sign}/>
         <Route path="/cadastro" component={SignUp}/>
@@ -28,7 +35,12 @@ const Routes: React.FC = () => {
         <Route path="/registro-profissional" component={RegisterProfessional}/>
         <Route path="/registro-endereco" component={RegisterAdress}/>
         <Route path="/Agendar" component={CustomerSchedule}/>
+        <Route path="/agendados" component={SchedulingSpecialista}/>
         <Route path="/Agendamentos" component={Scheduling}/>
+        <Route path="/Calendario" component={Calendario}/>
+        <Route path="/Historico" component={Historico}/>
+        <Route path="/Pacientes" component={Pacientes}/>
+        <Route path="/Prontuarios" component={Prontuarios}/>
       </Switch>
     </BrowserRouter>
   );

@@ -11,7 +11,7 @@ import ButtonOutline from '../ButtonOutline';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import { ReactComponent as Pin } from '../../assets/pin.svg';
 
-const Header: React.FC = () => {
+const HeaderSpecialista: React.FC = () => {
   const [states, setStates] = useState<IResponse[]>([]);
 
   useEffect(() => {
@@ -25,41 +25,47 @@ const Header: React.FC = () => {
 
   return (
     <HeaderComponent>
-      <Link to="/">
+      <Link to="/especialista">
         <Logo />
       </Link>
 
-      <Link to="/Agendamentos" >
+      <Link to="/agendados" >
           <ButtonOutline>
             Agendamentos
           </ButtonOutline>
         </Link>
-        <Link to="/Agendar" >
+        
+        <Link to="/Calendario" >
           <ButtonOutline>
-            Agendar
+            Calendário
+          </ButtonOutline>
+        </Link>
+
+        <Link to="/Pacientes" >
+          <ButtonOutline>
+            Paciente
+          </ButtonOutline>
+        </Link>
+
+        <Link to="/Historico" >
+          <ButtonOutline>
+            Historico
+          </ButtonOutline>
+        </Link>
+
+
+        <Link to="/Prontuarios" >
+          <ButtonOutline>
+            Prontuários
           </ButtonOutline>
         </Link>
 
       <div className="nav">
       
-        <Pin />
-        <span>Estou em
-                   <strong>
-            <select name="UF">
-              {
-                states.length > 0 &&
-                states.map(state => {
-                  return (
-                    <option key={state.id} value={state.nome}>{state.sigla}</option>
-                  )
-                })
-              }
-            </select>
-          </strong>
-        </span>
+        
         <Link to="/login">
           <ButtonOutline>
-            Entrar
+            sair
           </ButtonOutline>
         </Link>
       </div>
@@ -67,4 +73,4 @@ const Header: React.FC = () => {
   )
 }
 
-export default Header;
+export default HeaderSpecialista;

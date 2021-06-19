@@ -16,7 +16,7 @@ const Schedules: React.FC = () => {
               <div className="buttons">
               <Button><Link to="/agendar">Agendar</Link></Button>
                   <ButtonOutline>
-                    <strong>3x de 299</strong>
+                    <strong> 599</strong>
                   </ButtonOutline>
               </div>
           </div>
@@ -26,7 +26,7 @@ const Schedules: React.FC = () => {
               <div className="buttons">
                   <Button><Link to="/agendar">Agendar</Link></Button>
                   <ButtonOutline>
-                    <strong>3x de 299</strong>
+                    <strong>459</strong>
                   </ButtonOutline>
               </div>
           </div>
@@ -36,7 +36,7 @@ const Schedules: React.FC = () => {
               <div className="buttons">
               <Button><Link to="/agendar">Agendar</Link></Button>
                   <ButtonOutline>
-                    <strong>3x de 299</strong>
+                    <strong> 299</strong>
                   </ButtonOutline>
               </div>
           </div>
