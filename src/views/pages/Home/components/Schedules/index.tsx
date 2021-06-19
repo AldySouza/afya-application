@@ -1,46 +1,56 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import AuthContext from "../../../../../context/AuthContext";
 
 import { Container } from './styles';
 
 import Button from '../../../../../components/Button'
 import ButtonOutline from '../../../../../components/ButtonOutline'
-import { Link } from 'react-router-dom';
 
-const Schedules: React.FC = () => {
-  
+interface IProps {
+  title: string,
+  value: number;
+}
+
+const Schedules: React.FC<IProps> = ({ title, value }) => {
+
+  const { user } = useContext(AuthContext);
+
+  const checkRoles = () => {
+    console.log(user.roles)
+    return user.roles && user.roles.some(role => role.name == 'ROLE_CLIENT');
+  }
+
+  const handleClick = () => {
+    if(!user.name) { 
+      window.location.href = '/login';
+      return;
+    }
+
+    if(!checkRoles()) {
+      window.location.href = '/registro-cliente';
+      return;
+    }
+    
+    window.location.href = '/agendar';
+
+  }
+
   return (
-      <Container>
-
-          <div className="_schedule">
-              <h3>Cardiologia - online</h3>
-              <div className="buttons">
-              <Button><Link to="/agendar">Agendar</Link></Button>
+      <>
+        <Container>
+            <div className="_schedule">
+                <h3>{title}</h3>
+                <div className="buttons">
+                  <Button onClick={handleClick}>
+                    <span>Agendar</span>
+                  </Button>
                   <ButtonOutline>
-                    <strong> 599</strong>
+                    <strong>R$ {value}</strong>
                   </ButtonOutline>
-              </div>
-          </div>
-
-          <div className="_schedule">
-              <h3>Emdocrinologia - online</h3>
-              <div className="buttons">
-                  <Button><Link to="/agendar">Agendar</Link></Button>
-                  <ButtonOutline>
-                    <strong>459</strong>
-                  </ButtonOutline>
-              </div>
-          </div>
-
-          <div className="_schedule">
-              <h3>Dermatologia - online</h3>
-              <div className="buttons">
-              <Button><Link to="/agendar">Agendar</Link></Button>
-                  <ButtonOutline>
-                    <strong> 299</strong>
-                  </ButtonOutline>
-              </div>
-          </div>
-      </Container>
+                </div>
+            </div>
+        </Container>
+      </>
   );
 }
 
