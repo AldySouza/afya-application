@@ -3,4 +3,5 @@ export interface IProps {
     placeHolder?: string,
     inputType?: string,
     Name?: string,
+    Value?: string | number
 }

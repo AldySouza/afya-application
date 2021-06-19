@@ -81,6 +81,17 @@ export const Container = styled.div`
                 cursor: pointer;
             }
         }
+
+        select {
+            display: flex;
+            flex: 1;
+            width: 100%;
+            padding: 8px 10px;
+            margin-top: 4px;
+            background: #FFF;
+            border: 1px solid #eee;
+            border-radius: 4px;
+        }
     }
     @media (max-width: 959px) {
         & {

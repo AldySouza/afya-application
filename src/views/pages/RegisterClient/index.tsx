@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 
 import { Container } from '../RegisterProfessional/styles';
 import Button from '../../../components/Button';
@@ -7,67 +7,48 @@ import Input from '../../../components/Input';
 
 import { ReactComponent as LogoXG } from '../../../assets/logo-xg.svg';
 import Select from '../../../components/Select';
-import { AxiosHttpClient } from '../../../helpers/httpClient/ajaxAdapter';
-import { baseURL } from '../../../services/Utils';
+
+import AuthContext from '../../../context/AuthContext';
 import Validator from '../../../helpers/Validator';
 
 const bloodTypes = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
 
 const RegisterClient: React.FC = () => {
-  const [error, setError] = useState({ message: '',
-  isError: false});
-  
+  const [error, setError] = useState({
+      message: '',
+      isError: false
+  });
+  const [isDone, setIsDone] = useState<boolean>(false);
+  const [client, setClient] = useState({});
+  const { user } = useContext(AuthContext);
 
-   const handleForm = async (e: any) => {
-     e.preventDefault();
-  
-   const { cpf, email, phone } = document.forms[0];
+  const handleForm = (e: any) => {
+      e.preventDefault();
+      const { cpf, celular, phone, bloodType } = document.forms[0];
 
-   if(Validator.isEmpty([cpf.value, email.value, phone.value])) {
-    const error = {error: 'Verifique se preencheu todos os campos', isError: true };
-    handleError(error);
-    return;
-}
+      if(Validator.isEmpty([cpf.value, celular.value, phone.value, bloodType.value])) {
+        const error = {error: 'Verifique se preencheu todos os campos', isError: true };
+        handleError(error);
+        return;
+      }
 
-const http = new AxiosHttpClient();
-const { body, statusCode } = await http.request({
-    url: `${baseURL}/sessions`,
-    method: 'post',
-    body: {
-        "cpf": cpf.value,
-        "email" : email.value,
-        "phone": phone.value
-        
-    }
-});
+      setClient({
+        cpf: cpf.value, celular: celular.value, 
+        telefone: phone.value, tipo_sanguineo: bloodType.value, 
+        name: user.name, email: user.username,
+        id: user.id
+      });
 
-if(statusCode !== 200) {
-    handleError(body);
-    return;
-}
+      setIsDone(true);
+  }
 
-try {
-    const { token, user } = body;
-    delete user.password;
-
-    localStorage.setItem('@token', token);
-    localStorage.setItem('@user', JSON.stringify(user));
-
-    window.location.href = '/';
-} catch(err) {
-    console.log('An error occured');
-}
-    
-   }
-
-   const handleError = (body: any) => {
+  const handleError = (body: any) => {
     setError({message: body.error, isError: true });
 
     setTimeout(() => {
         setError({message: '', isError: false });
     }, 3000)
-}
-
+  }
 
   
   return (
@@ -78,18 +59,28 @@ try {
           <LogoXG />
           { error.isError  && <span className="error">{error.message}</span> }
           <Input inputType="text" placeHolder="Digite seu CPF" Name="cpf" />
-          <Input inputType="text" placeHolder="Digite seu celular" Name="phone"  />
-          <Input inputType="email" placeHolder="Digite um telefone" Name="email" />
+          <Input inputType="text" placeHolder="Digite seu celular" Name="celular"  />
+          <Input inputType="text" placeHolder="Digite um telefone" Name="phone" />
 
-          <Select Name="blood-type" >
+          <Select Name="bloodType" >
             { bloodTypes.map((type) => <option value={type}>{ type }</option>) }
           </Select>
 
-          <Link to="/registro-endereco">
-            <Button>Próximo</Button>
-          </Link>
+          {
+            isDone ?
+            <Redirect
+                to={{
+                pathname: "/registro-endereco",
+                state: { prevData: client }
+              }}
+            />
+            :
+            <span onClick={(e) => handleForm(e)}>
+              <Button>Próximo</Button>
+            </span>
+          }
 
-          <span>Já tem cadastro? <Link to="/login"><strong>Entrar</strong></Link></span>
+          {/* <span>Já tem cadastro? <Link to="/login"><strong>Entrar</strong></Link></span> */}
         </form>
       </div>
 
@@ -106,7 +97,3 @@ try {
 }
 
 export default RegisterClient;
-
-function setError(arg0: { message: any; isError: boolean; }) {
-  throw new Error('Function not implemented.');
-}

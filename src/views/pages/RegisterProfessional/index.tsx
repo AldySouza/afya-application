@@ -33,7 +33,7 @@ const RegisterProfessional: React.FC = () => {
             <Button>Próximo</Button>
           </Link>
 
-          <span>Já tem cadastro? <Link to="/login"><strong>Entrar</strong></Link></span>
+          {/* <span>Já tem cadastro? <Link to="/login"><strong>Entrar</strong></Link></span> */}
         </form>
       </div>
 

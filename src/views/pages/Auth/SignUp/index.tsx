@@ -82,9 +82,11 @@ const SignUp: React.FC = () => {
                     <Input inputType="email" placeHolder="Digite seu e-mail" Name="email" />
                     <Input inputType="password" placeHolder="Digite sua senha" Name="password" />
 
-                    <Link to="/registro">
-                        <Button>Cadastrar</Button>
-                    </Link>
+                    <Button
+                        onClick={(e) => handleForm(e)}
+                    >
+                        Cadastrar
+                    </Button>
 
 
                     <span>Já tem cadastro? <Link to="/login"><strong>Entrar</strong></Link></span>
