@@ -9,12 +9,14 @@ import { ReactComponent as LogoXG } from '../../../../assets/logo-xg.svg';
 import { AxiosHttpClient } from '../../../../helpers/httpClient/ajaxAdapter';
 import { baseURL } from '../../../../services/Utils';
 import Validator from '../../../../helpers/Validator';
+import Loading from '../../../../components/Loading';
 
 const SignUp: React.FC = () => {
     const [error, setError] = useState({
         message: '',
         isError: false
     });
+    const [loading, setLoading] = useState<boolean>(false);
 
     const handleForm = async (e: any) => {
         e.preventDefault();
@@ -27,6 +29,7 @@ const SignUp: React.FC = () => {
             return;
         }
 
+        setLoading(true);
         const http = new AxiosHttpClient();
         const { body, statusCode } = await http.request({
             url: `${baseURL}/users`,
@@ -40,6 +43,7 @@ const SignUp: React.FC = () => {
         });
 
         if(statusCode !== 200 && statusCode !== 201) {
+            setLoading(false);
             handleError(body);
             return;
         }
@@ -48,8 +52,10 @@ const SignUp: React.FC = () => {
             delete body.created_at;
             localStorage.setItem('@user', JSON.stringify(body));
 
+            setLoading(false);
             window.location.href = '/login';
         } catch(err) {
+            setLoading(false);
             console.log('An error occured');
         }
 
@@ -65,6 +71,7 @@ const SignUp: React.FC = () => {
 
     return (
         <Container>
+            { loading && <Loading />}
             <div className="leftContainer">
                 <h1>Crie sua conta<br />
                     e aproveite<br />

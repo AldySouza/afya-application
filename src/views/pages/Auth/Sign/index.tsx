@@ -9,6 +9,7 @@ import { AxiosHttpClient } from '../../../../helpers/httpClient/ajaxAdapter';
 import { ReactComponent as LogoXG } from '../../../../assets/logo-xg.svg';
 import { baseURL } from '../../../../services/Utils';
 import Validator from '../../../../helpers/Validator';
+import Loading from '../../../../components/Loading';
 
 const Sign: React.FC = () => {
     const [error, setError] = useState({
@@ -16,7 +17,7 @@ const Sign: React.FC = () => {
         isError: false
     });
 
-    const [inputErrors, setInputErrros] = useState([]);
+    const [loading, setLoading] = useState<boolean>(false);
 
     const handleForm = async (e: any) => {
         e.preventDefault();
@@ -29,6 +30,7 @@ const Sign: React.FC = () => {
             return;
         }
 
+        setLoading(true);
         const http = new AxiosHttpClient();
         const { body, statusCode } = await http.request({
             url: `${baseURL}/sessions`,
@@ -40,6 +42,7 @@ const Sign: React.FC = () => {
         });
 
         if(statusCode !== 200) {
+            setLoading(false);
             handleError(body);
             return;
         }
@@ -51,8 +54,10 @@ const Sign: React.FC = () => {
             localStorage.setItem('@token', token);
             localStorage.setItem('@user', JSON.stringify(user));
 
+            setLoading(false);
             window.location.href = '/';
         } catch(err) {
+            setLoading(false);
             console.log('An error occured');
         }
 
@@ -69,6 +74,7 @@ const Sign: React.FC = () => {
 
     return (
         <Container>
+            { loading && <Loading />}
             <div className="leftContainer">
                 <h1>Entre<br/>
                     e aproveite<br/>
