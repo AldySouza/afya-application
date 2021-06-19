@@ -23,6 +23,12 @@ const Routes: React.FC = () => {
       <Switch>
         <Route path="/" exact component={Home}/>
         <Route path="/busca" component={Search}/>
+        <Route path="/registro" component={Register}/>
+        <Route path="/registro-cliente" component={RegisterClient}/>
+        <Route path="/registro-profissional" component={RegisterProfessional}/>
+        <Route path="/registro-endereco" component={RegisterAdress}/>
+        <Route path="/Agendar" component={CustomerSchedule}/>
+        <Route path="/Agendamentos" component={Scheduling}/>
         {
           !signed &&
             <>
@@ -30,12 +36,6 @@ const Routes: React.FC = () => {
               <Route path="/cadastro" component={SignUp}/>
             </>
         }
-        <Route path="/registro" component={Register}/>
-        <Route path="/registro-cliente" component={RegisterClient}/>
-        <Route path="/registro-profissional" component={RegisterProfessional}/>
-        <Route path="/registro-endereco" component={RegisterAdress}/>
-        <Route path="/Agendar" component={CustomerSchedule}/>
-        <Route path="/Agendamentos" component={Scheduling}/>
       </Switch>
     </BrowserRouter>
   );

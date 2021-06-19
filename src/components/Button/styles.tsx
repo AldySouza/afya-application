@@ -8,6 +8,10 @@ export const ButtonComponent = styled.button`
   margin: 0 5px;
   font-weight: 600;
 
+  a {
+    color: #fff;
+  }
+
   &:hover {
     background: var(--primary-dark);
     cursor: pointer;

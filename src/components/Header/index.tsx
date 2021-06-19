@@ -33,19 +33,20 @@ const Header: React.FC = () => {
         <Logo />
       </Link>
 
-      <Link to="/Agendamentos" >
+      { user.name &&
+        <Link to="/Agendamentos" >
           <ButtonOutline>
             Agendamentos
           </ButtonOutline>
-        </Link>
-        <Link to="/Agendar" >
-          <ButtonOutline>
-            Agendar
-          </ButtonOutline>
-        </Link>
+        </Link> 
+      }
+      <Link to="/Agendar" >
+        <ButtonOutline>
+          Agendar
+        </ButtonOutline>
+      </Link>
 
         <div className="nav">
-                { user && <span>Olá, <strong>{user.name}</strong></span>}
                 <Pin />
                 <span>Estou em 
                    <strong>
@@ -61,11 +62,15 @@ const Header: React.FC = () => {
             </select>
           </strong>
         </span>
-        <Link to="/login">
-          <ButtonOutline>
-            Entrar
-          </ButtonOutline>
-        </Link>
+        { user.name ?
+            <span>Olá, <Link to="/">{user.name}</Link></span>
+          :
+          <Link to="/login">
+            <ButtonOutline>
+              Entrar
+            </ButtonOutline>
+          </Link>
+        }
       </div>
     </HeaderComponent>
   )

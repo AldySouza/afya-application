@@ -86,7 +86,7 @@ const Sign: React.FC = () => {
                     <Input inputType="email" placeHolder="Digite seu email" Name="username" />
                     <Input inputType="password" placeHolder="Digite sua senha" Name="password" />
 
-                    <Button onClick={(e) => handleForm(e)}><Link to="/">Entrar</Link></Button>
+                    <Button onClick={(e) => handleForm(e)}>Entrar</Button>
 
                     <span>Não tem cadastro? <Link to="/cadastro"><strong>Cadastrar</strong></Link></span>
                 </form>

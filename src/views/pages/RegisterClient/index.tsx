@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 
 import { Container } from '../RegisterProfessional/styles';
 import Button from '../../../components/Button';
@@ -8,20 +8,47 @@ import Input from '../../../components/Input';
 import { ReactComponent as LogoXG } from '../../../assets/logo-xg.svg';
 import Select from '../../../components/Select';
 
+import AuthContext from '../../../context/AuthContext';
+import Validator from '../../../helpers/Validator';
+
 const bloodTypes = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
 
 const RegisterClient: React.FC = () => {
-  const [form] = useState({});
-  const API_KEY = "pk.eyJ1IjoiYnJlbm9nY290YSIsImEiOiJja3BrMDA5b3MwZXQ3MnBydDc4ODRuM284In0._VgelmZhtWi7lAneRalSFA";
+  const [error, setError] = useState({
+      message: '',
+      isError: false
+  });
+  const [isDone, setIsDone] = useState<boolean>(false);
+  const [client, setClient] = useState({});
+  const { user } = useContext(AuthContext);
 
-   const handleForm = (e: any) => {
-     e.preventDefault();
-  
-   const { username, email, password } = document.forms[0];
+  const handleForm = (e: any) => {
+      e.preventDefault();
+      const { cpf, celular, phone, bloodType } = document.forms[0];
 
-     console.log(username.value, email.value, password.value);
-   }
+      if(Validator.isEmpty([cpf.value, celular.value, phone.value, bloodType.value])) {
+        const error = {error: 'Verifique se preencheu todos os campos', isError: true };
+        handleError(error);
+        return;
+      }
 
+      setClient({
+        cpf: cpf.value, celular: celular.value, 
+        telefone: phone.value, tipo_sanguineo: bloodType.value, 
+        name: user.name, email: user.username,
+        id: user.id
+      });
+
+      setIsDone(true);
+  }
+
+  const handleError = (body: any) => {
+    setError({message: body.error, isError: true });
+
+    setTimeout(() => {
+        setError({message: '', isError: false });
+    }, 3000)
+  }
 
   
   return (
@@ -30,19 +57,30 @@ const RegisterClient: React.FC = () => {
       <div className="leftContainer">
         <form name="signin" className="signinForm">
           <LogoXG />
+          { error.isError  && <span className="error">{error.message}</span> }
           <Input inputType="text" placeHolder="Digite seu CPF" Name="cpf" />
           <Input inputType="text" placeHolder="Digite seu celular" Name="celular"  />
-          <Input inputType="email" placeHolder="Digite um telefone" Name="phone" />
+          <Input inputType="text" placeHolder="Digite um telefone" Name="phone" />
 
-          <Select Name="blood-type" >
+          <Select Name="bloodType" >
             { bloodTypes.map((type) => <option value={type}>{ type }</option>) }
           </Select>
 
-          <Link to="/registro-endereco">
-            <Button>Próximo</Button>
-          </Link>
+          {
+            isDone ?
+            <Redirect
+                to={{
+                pathname: "/registro-endereco",
+                state: { prevData: client }
+              }}
+            />
+            :
+            <span onClick={(e) => handleForm(e)}>
+              <Button>Próximo</Button>
+            </span>
+          }
 
-          <span>Já tem cadastro? <Link to="/login"><strong>Entrar</strong></Link></span>
+          {/* <span>Já tem cadastro? <Link to="/login"><strong>Entrar</strong></Link></span> */}
         </form>
       </div>
 
