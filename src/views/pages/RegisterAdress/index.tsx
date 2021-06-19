@@ -46,9 +46,33 @@ const RegisterAdress: React.FC = () => {
 
       setAddress(address);
 
-      let response = saveClient(client);
-      let res = await response;
-      console.log(res)
+      setLoading(true);
+      const http = new AxiosHttpClient();
+
+      try {
+        const { body, statusCode } = await http.request({
+            url: `${baseURL}/clients`,
+            method: 'post',
+            body: client
+        });
+
+        if(statusCode === 201) {
+          const { body, statusCode } = await http.request({
+            url: `${baseURL}/addresses`,
+            method: 'post',
+            body: address
+          });
+
+          if(statusCode === 201) {
+            setLoading(false);
+            window.location.href = '/Agendar';
+          }
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
 
   }
 

@@ -63,7 +63,7 @@ const RegisterClient: React.FC = () => {
           <Input inputType="text" placeHolder="Digite um telefone" Name="phone" />
 
           <Select Name="bloodType" >
-            { bloodTypes.map((type) => <option value={type}>{ type }</option>) }
+            { bloodTypes.map((type, index) => <option value={index+1}>{ type }</option>) }
           </Select>
 
           {
