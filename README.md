@@ -14,8 +14,7 @@
 - [Aline Branco](https://github.com/alinebw)
 - [Anderson Praxedes](https://github.com/andersonprax)
 - [Breno Cota](https://github.com/brenogcota)
-- Eduardo Matheus Rodrigues da Silva
-
+- [Eduardo Matheus Rodrigues da Silva](https://github.com/EduardoRS78)
 ## Desafio Atendimento Médico \ Prontuário
 Criar um sistema para um consultório controlar o cadastro de seus clientes, atendimentos e prontuário dos pacientes.
 
