@@ -6,6 +6,7 @@ import { Container } from './styles';
 import Button from '../../../../../components/Button'
 import ButtonOutline from '../../../../../components/ButtonOutline'
 import Modal from '../../../../../components/Modal';
+import { Link } from 'react-router-dom';
 
 interface IProps {
   title: string,
@@ -19,17 +20,17 @@ const Schedules: React.FC<IProps> = ({ title, value }) => {
 
   const checkRoles = () => {
     console.log(user.roles)
-    return user.roles && user.roles.some(role => role.name == 'ROLE_CLIENT');
+    return user.roles && user.roles.some(role => role.name == 'ROLE_USER');
   }
 
-  const handleClick = (location: string) => {
+  const handleClick = () => {
     if(!user.name) { 
       window.location.href = '/login';
       return;
     }
 
-    if(!checkRoles()) {
-      window.location.href = location;
+    if(checkRoles()) {
+      setIsOpen(!isOpen);
       return;
     }
     
@@ -43,7 +44,7 @@ const Schedules: React.FC<IProps> = ({ title, value }) => {
             <div className="_schedule">
                 <h3>{title}</h3>
                 <div className="buttons">
-                  <Button onClick={() => setIsOpen(!isOpen)}>
+                  <Button onClick={() => handleClick()}>
                     <span>Agendar</span>
                   </Button>
                   <ButtonOutline>
@@ -63,8 +64,12 @@ const Schedules: React.FC<IProps> = ({ title, value }) => {
             
             <h3 style={{"margin": "30px 0"}}>Fala para a gente, você é?</h3>
             <div>
-              <Button onClick={() => handleClick('/registro-cliente')}>Cliente</Button>
-              <ButtonOutline onClick={() => handleClick('/registro-profissional')}>Especialista</ButtonOutline>
+              <Link to="/registro-cliente">
+                <Button>Cliente</Button>
+              </Link>
+              <Link to="/registro-profissional">
+                <ButtonOutline>Especialista</ButtonOutline>
+              </Link>
             </div>
 
           </div>

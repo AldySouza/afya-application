@@ -8,6 +8,8 @@ import Input from '../../../components/Input';
 import { ReactComponent as LogoXG } from '../../../assets/logo-xg.svg';
 import AuthContext from '../../../context/AuthContext';
 import Validator from '../../../helpers/Validator';
+import { AxiosHttpClient } from '../../../helpers/httpClient/ajaxAdapter';
+import { baseURL } from '../../../services/Utils';
 
 const RegisterProfessional: React.FC = () => {
   const [error, setError] = useState({
@@ -18,7 +20,7 @@ const RegisterProfessional: React.FC = () => {
   const [client, setClient] = useState({});
   const { user } = useContext(AuthContext);
 
-  const handleForm = (e: any) => {
+  const handleForm = async (e: any) => {
       e.preventDefault();
       const { crm, celular, phone, profession } = document.forms[0];
 
@@ -28,10 +30,13 @@ const RegisterProfessional: React.FC = () => {
         return;
       }
 
+      const res = await getRoles();
+
       setClient({
         cpf: crm.value, celular: celular.value, 
         telefone: phone.value, profissao: profession.value, 
         name: user.name, email: user.username,
+        role: res?.body.id,
         id: user.id
       });
 
@@ -45,6 +50,23 @@ const RegisterProfessional: React.FC = () => {
         setError({message: '', isError: false });
     }, 3000)
   }
+
+  const getRoles = async () => {
+    try {
+      const http = new AxiosHttpClient();
+      const { body, statusCode } = await http.request({
+          url: `${baseURL}/roles/role_specialist`,
+          method: 'get'
+      });
+
+
+      return { body, statusCode };
+
+    } catch(error) {
+      console.log(error);
+    }
+  }
+
   return (
     <Container>
 
@@ -62,7 +84,7 @@ const RegisterProfessional: React.FC = () => {
             <Redirect
                 to={{
                 pathname: "/registro-endereco",
-                state: { prevData: client }
+                state: { prevData: client, path: "/specialists"}
               }}
             />
             :

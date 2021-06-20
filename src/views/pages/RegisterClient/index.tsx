@@ -10,6 +10,8 @@ import Select from '../../../components/Select';
 
 import AuthContext from '../../../context/AuthContext';
 import Validator from '../../../helpers/Validator';
+import { baseURL } from '../../../services/Utils';
+import { AxiosHttpClient } from '../../../helpers/httpClient/ajaxAdapter';
 
 const bloodTypes = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
 
@@ -22,7 +24,7 @@ const RegisterClient: React.FC = () => {
   const [client, setClient] = useState({});
   const { user } = useContext(AuthContext);
 
-  const handleForm = (e: any) => {
+  const handleForm = async (e: any) => {
       e.preventDefault();
       const { cpf, celular, phone, bloodType } = document.forms[0];
 
@@ -32,11 +34,17 @@ const RegisterClient: React.FC = () => {
         return;
       }
 
+      const res = await getRoles();
+
       setClient({
-        cpf: cpf.value, celular: celular.value, 
-        telefone: phone.value, tipo_sanguineo: bloodType.value, 
-        name: user.name, email: user.username,
-        id: user.id
+        cpf: cpf.value, 
+        celular: celular.value, 
+        telefone: phone.value, 
+        tipo_sanguineo: bloodType.value, 
+        name: user.name, 
+        email: user.username,
+        role: res?.body.id,
+        users: user.id
       });
 
       setIsDone(true);
@@ -48,6 +56,22 @@ const RegisterClient: React.FC = () => {
     setTimeout(() => {
         setError({message: '', isError: false });
     }, 3000)
+  }
+
+  const getRoles = async () => {
+    try {
+      const http = new AxiosHttpClient();
+      const { body, statusCode } = await http.request({
+          url: `${baseURL}/roles/role_client`,
+          method: 'get'
+      });
+
+
+      return { body, statusCode };
+
+    } catch(error) {
+      console.log(error);
+    }
   }
 
   
@@ -71,7 +95,7 @@ const RegisterClient: React.FC = () => {
             <Redirect
                 to={{
                 pathname: "/registro-endereco",
-                state: { prevData: client }
+                state: { prevData: client, path: "/clients" }
               }}
             />
             :

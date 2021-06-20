@@ -21,6 +21,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     getUser();
+    console.log(user);
   }, [signed])
 
   const getUser = async () => {

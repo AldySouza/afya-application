@@ -13,9 +13,12 @@ import ButtonOutline from '../../../components/ButtonOutline';
 import { Link } from 'react-router-dom';
 import Loading from '../../../components/Loading';
 
+interface IClient {
+  id: string
+}
 
 const RegisterAdress: React.FC = () => {
-  const [client, setClient] = useState({});
+  const [client, setClient] = useState<IClient>();
   const [address, setAddress] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
   
@@ -25,33 +28,40 @@ const RegisterAdress: React.FC = () => {
   });
 
   useEffect(() => {
-    const prevData = window.history.state.state.prevData
+    const prevData = window.history.state.state.prevData;
     setClient(prevData);
+    console.log(prevData)
   },[])
 
 
   const handleForm = async (e: any) => {
       e.preventDefault();
-      const { cep, logradouro, number, complement, district, city, uf } = document.forms[0];
+      const { cep, logradouro, number, district, city, uf } = document.forms[0];
 
-      if(Validator.isEmpty([cep.value, logradouro.value, number.value, complement.value, district.value, city.value, uf.value])) {
+      if(Validator.isEmpty([cep.value, logradouro.value, number.value, district.value, city.value, uf.value])) {
         const error = {error: 'Verifique se preencheu todos os campos', isError: true };
         handleError(error);
         return;
       }
 
       const address = {
-        cep: cep.value, logradouro: logradouro.value, number: number.value, complemento: complement.value, localidade: city.value, bairro: district.value, uf: uf.value
+        cep: cep.value, 
+        logradouro: logradouro.value, 
+        numero: number.value,
+        localidade: city.value, 
+        bairro: district.value, 
+        uf: uf.value,
+        users: client?.id
       }
 
       setAddress(address);
-
       setLoading(true);
+
       const http = new AxiosHttpClient();
 
       try {
         const { body, statusCode } = await http.request({
-            url: `${baseURL}/clients`,
+            url: `${baseURL}${window.history.state.state.path}`,
             method: 'post',
             body: client
         });
@@ -65,7 +75,7 @@ const RegisterAdress: React.FC = () => {
 
           if(statusCode === 201) {
             setLoading(false);
-            window.location.href = '/Agendar';
+            window.location.href = '/busca';
           }
         }
       } catch (error) {
@@ -138,7 +148,6 @@ const RegisterAdress: React.FC = () => {
           />
         <Input inputType="text" placeHolder="Digite seu endereço" Name="logradouro"/>
           <Input inputType="text" placeHolder="Digite seu número" Name="number" />
-          <Input inputType="text" placeHolder="Complemento" Name="complement" />
           <Input inputType="text" placeHolder="Digite seu bairro" Name="district"/>
           <Input inputType="text" placeHolder="Digite sua cidade" Name="city" Value={address?.localidade} />
           <Input inputType="text" placeHolder="Digite seu estado" Name="uf" Value={address?.uf}/>
@@ -148,7 +157,7 @@ const RegisterAdress: React.FC = () => {
               <Button>Finalizar</Button>
             </span>
 
-            <Link to="/registro-cliente">
+            <Link to={window.history.state.state.path == '/clients' ? '/registro-cliente':'registro-profissional'}>
               <ButtonOutline>Voltar</ButtonOutline>
             </Link>
           </div>

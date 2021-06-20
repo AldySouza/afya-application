@@ -29,6 +29,8 @@ const SignUp: React.FC = () => {
             return;
         }
 
+        const res = await getRoles();
+
         setLoading(true);
         const http = new AxiosHttpClient();
         const { body, statusCode } = await http.request({
@@ -38,7 +40,7 @@ const SignUp: React.FC = () => {
                 "name": username.value,
                 "username": email.value,
                 "password": password.value,
-                "roles": "7a190678-008b-444d-a586-3e0c112996e2"
+                "roles": res?.body.id
             }
         });
 
@@ -68,6 +70,22 @@ const SignUp: React.FC = () => {
             setError({message: '', isError: false });
         }, 3000)
     }
+
+    const getRoles = async () => {
+        try {
+          const http = new AxiosHttpClient();
+          const { body, statusCode } = await http.request({
+              url: `${baseURL}/roles/role_user`,
+              method: 'get'
+          });
+    
+    
+          return { body, statusCode };
+    
+        } catch(error) {
+          console.log(error);
+        }
+      }
 
     return (
         <Container>
