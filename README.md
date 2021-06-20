@@ -1,6 +1,5 @@
 ![](https://img.shields.io/badge/FrontEnd-HTM/CSS/JavaScript-green)
-![](https://img.shields.io/badge/BackEnd-Node/TypeScript-green)
-![](https://img.shields.io/badge/BackEnd-TypeORM-green)
+![](https://img.shields.io/badge/BackEnd-Node/TypeScript/TypeORM-green)
 ![](https://img.shields.io/badge/Security-jsonwebtoken-green)
 ![](https://img.shields.io/badge/database-postgreSQL-blue)
 ![](https://img.shields.io/badge/Infra-Heroku-blueviolet)
@@ -16,9 +15,7 @@
 
 #### Integrantes do grupo:
 
-|Ailson()=>|Aldy()=>|Aline()=>|Anderson()=>|Breno()=>|Eduardo()=>|
-|-|-|-|-|-|
-|<p align="center"><img style="border-radius: 100px" width="100px" src="https://avatars.githubusercontent.com/u/67612672?v=4"  alt="Ailson" /><br />[Ailson][ailsonjr] Pacheco</p>|<p align="center"><img style="border-radius: 100px" width="100px" src="https://avatars.githubusercontent.com/u/60198926?v=4"  alt="Aldicleiry" /><br />[Aldicleiry][AldySouza] Silva</p>|<p align="center"><img style="border-radius: 100px" width="100px" src="https://avatars.githubusercontent.com/u/79863993?v=4" alt="Aline Branco" width="100px"/><br />[Aline][alinebw] Branco </p>|<p align="center"><img style="border-radius: 100px" width="100px" src="https://avatars.githubusercontent.com/u/29051982?s=400&u=9075f45ce5450c21e5fbab326df6534333be3126&v=4"  alt="Anderson Praxedes" /><br />[Anderson][andersonprax] Praxedes</p>|<p align="center"><img style="border-radius: 100px" width="100px" src="https://avatars.githubusercontent.com/u/46490801?v=4"  alt="Breno Cota"/><br />[Breno][brenogcota] Cota</p>|<p align="center"><img style="border-radius: 100px" width="100px" src="https://avatars.githubusercontent.com/u/69769953?v=4"  alt="Eduardo Silva"/><br />[Eduardo][EduardoRS78] Silva</p>|
+<p align="center"><img style="border-radius: 100px" width="100px" src="https://avatars.githubusercontent.com/u/67612672?v=4"  alt="Ailson" /><br />- [Ailson Pacheco Lima Junior](https://github.com/ailsonjr)</p><p align="center"><img style="border-radius: 100px" width="100px" src="https://avatars.githubusercontent.com/u/60198926?v=4"  alt="Aldicleiry" /><br />- [Aldicleiry de Souza Silva](https://github.com/AldySouza)</p><p align="center"><img style="border-radius: 100px" width="100px" src="https://avatars.githubusercontent.com/u/79863993?v=4" alt="Aline Branco" width="100px"/><br />- [Aline Branco](https://github.com/alinebw)</p><p align="center"><img style="border-radius: 100px" width="100px" src="https://avatars.githubusercontent.com/u/29051982?s=400&u=9075f45ce5450c21e5fbab326df6534333be3126&v=4"  alt="Anderson Praxedes" /><br />- [Anderson Praxedes](https://github.com/andersonprax)</p><p align="center"><img style="border-radius: 100px" width="100px" src="https://avatars.githubusercontent.com/u/46490801?v=4"  alt="Breno Cota"/><br />- [Breno Cota](https://github.com/brenogcota)</p><p align="center"><img style="border-radius: 100px" width="100px" src="https://avatars.githubusercontent.com/u/69769953?v=4"  alt="Eduardo Silva"/><br />- [Eduardo Matheus Rodrigues da Silva](https://github.com/EduardoRS78)</p>
 
 ## Desafio Atendimento Médico \ Prontuário
 Criar um sistema para um consultório controlar o cadastro de seus clientes, atendimentos e prontuário dos pacientes.
