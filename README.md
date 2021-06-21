@@ -1,6 +1,9 @@
 ![](https://img.shields.io/badge/FrontEnd-HTM/CSS/JavaScript/React-green)
 ![](https://img.shields.io/badge/Security-jsonwebtoken-green)
 
+![](https://afya.gama.academy/wp-content/uploads/2021/04/logo-afya-labs.png) 
+![](https://assets.website-files.com/5ff79f3ebebf6b12f6b7747f/5ffe04fc6284b7e90070d985_logo-gama-academy-p-500.png)
+
 # Aplicação Front End para consumo de API de agendamento de Consultas
 
 ## Sobre:
@@ -35,6 +38,31 @@ cd afya-aplication
 npm install
 npm start
 ```
+
+## Funcionalidades:
+
+- Agendamento de consultas (No caso de paciente);
+- Agenda com consulta agendadas;
+- 
+- Cadastro de usuários, podendo ser paciente ou especialista;
+- Cadastro contendo as seguintes informações:
+  - Nome completo;
+  - Email;
+  - Username;
+  - Senha;
+  - Registro (No caso de especialista);
+  - CPF (No caso de paciente);
+  - Tipo sanguíneo (No caso de paciente);
+  - Endereço com:
+    - CEP;
+    - Rua;
+    - Número;
+    - Complemento
+    - Bairro;
+    - Cidade;
+    - Estado;
+    - Profissão (No caso de especialista).
+
 
 
 [ailsonjr]:https://github.com/ailsonjr
