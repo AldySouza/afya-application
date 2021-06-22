@@ -16,7 +16,11 @@ interface ISpecialist {
   id: string,
   name: string,
   registro: string,
-  telefone: string
+  telefone: string,
+  profession: {
+    id: string,
+    name: string,
+  }
 }
 
 const Home: React.FC = () => {
@@ -33,7 +37,9 @@ const Home: React.FC = () => {
       method: 'get'
     });
 
-    statusCode == 200 ? setSpecialists(body) : setSpecialists([]);
+    console.log(body);
+    
+    statusCode! >= 200 && statusCode! < 400 ? setSpecialists(body) : setSpecialists([]);
   }
 
   return (
@@ -45,7 +51,7 @@ const Home: React.FC = () => {
         {
           specialists && specialists?.length > 0 ?
             specialists.map(specialist => {
-              return <Schedules title={specialist.name} value={360}/>
+              return <Schedules title={specialist.name} profession={specialist.profession.name} value={360}/>
             })
           :
           <h1>Nenhum especialista cadastrado ainda</h1>

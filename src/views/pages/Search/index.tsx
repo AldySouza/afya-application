@@ -17,7 +17,13 @@ interface ISpecialist {
   id: string,
   name: string,
   registro: string,
-  telefone: string
+  telefone: string,
+  profession: string,
+  logradouro: string,
+  numero: string,
+  bairro: string,
+  localidade: string,
+  uf: string
 }
 
 const Search: React.FC = () => {
@@ -62,7 +68,11 @@ const Search: React.FC = () => {
             {
           specialists && specialists?.length > 0 ?
             specialists.map(specialist => {
-              return <Card name={specialist.name} profession="Ortopedista" address="Rua Carlos Prates" />
+                return (
+                  <div key={specialist.id}>
+                    <Card name={specialist.name} profession={specialist.profession} address={`${specialist.logradouro}, ${specialist.numero}, ${specialist.bairro} ${specialist.localidade} - ${specialist.uf}`} />
+                  </div>
+                )
               })
               :
               <h1>Nenhum especialista cadastrado ainda</h1>

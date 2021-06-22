@@ -10,17 +10,18 @@ import { Link } from 'react-router-dom';
 
 interface IProps {
   title: string,
-  value: number;
+  value: number,
+  profession: string
 }
 
-const Schedules: React.FC<IProps> = ({ title, value }) => {
+const Schedules: React.FC<IProps> = ({ title, value, profession }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const { user } = useContext(AuthContext);
 
   const checkRoles = () => {
     console.log(user.roles)
-    return user.roles && user.roles.some(role => role.name == 'ROLE_CLIENT');
+    return user.roles && user.roles.some(role => role.name == 'ROLE_CLIENT' || role.name == 'ROLE_SPECIALIST');
   }
 
   const handleClick = () => {
@@ -30,7 +31,7 @@ const Schedules: React.FC<IProps> = ({ title, value }) => {
     }
 
     if(checkRoles()) {
-      window.location.href = '/agendar';
+      window.location.href = '/busca';
       return;
     }
     
@@ -42,7 +43,7 @@ const Schedules: React.FC<IProps> = ({ title, value }) => {
       <>
         <Container>
             <div className="_schedule">
-                <h3>{title}</h3>
+                <h3>Dr. {title} - {profession}</h3>
                 <div className="buttons">
                   <Button onClick={() => handleClick()}>
                     <span>Agendar</span>
