@@ -33,7 +33,7 @@ const RegisterProfessional: React.FC = () => {
       const res = await getRoles();
 
       setClient({
-        cpf: crm.value, celular: celular.value, 
+        registro: crm.value, celular: celular.value, 
         telefone: phone.value, profissao: profession.value, 
         name: user.name, email: user.username,
         role: res?.body.id,
