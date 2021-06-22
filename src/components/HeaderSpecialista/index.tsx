@@ -23,6 +23,13 @@ const HeaderSpecialista: React.FC = () => {
     setStates(states.data);
   }
 
+  const signOut = () => {
+    localStorage.removeItem('@token');
+    localStorage.removeItem('@user');
+
+    window.location.href = '/login';
+  }
+
   return (
     <HeaderComponent>
       <Link to="/especialista">
@@ -63,11 +70,9 @@ const HeaderSpecialista: React.FC = () => {
       <div className="nav">
       
         
-        <Link to="/login">
-          <ButtonOutline>
-            sair
-          </ButtonOutline>
-        </Link>
+        <ButtonOutline onClick={() => signOut()}>
+          sair
+        </ButtonOutline>
       </div>
     </HeaderComponent>
   )

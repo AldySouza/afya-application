@@ -23,6 +23,13 @@ const Header: React.FC = () => {
     setStates(states.data);
   }
 
+  const signOut = () => {
+    localStorage.removeItem('@token');
+    localStorage.removeItem('@user');
+
+    window.location.href = '/login';
+  }
+
   return (
     <HeaderComponent>
       <Link to="/cliente">
@@ -57,11 +64,9 @@ const Header: React.FC = () => {
             </select>
           </strong>
         </span>
-        <Link to="/login">
-          <ButtonOutline>
+          <ButtonOutline onClick={() => signOut()}>
             sair
           </ButtonOutline>
-        </Link>
       </div>
     </HeaderComponent>
   )

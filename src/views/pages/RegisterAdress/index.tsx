@@ -66,6 +66,10 @@ const RegisterAdress: React.FC = () => {
             body: client
         });
 
+        const user = body.user;
+        delete user.password;
+        localStorage.setItem('@user', JSON.stringify(user));
+
         if(statusCode === 201) {
           const { body, statusCode } = await http.request({
             url: `${baseURL}/addresses`,

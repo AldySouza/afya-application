@@ -20,7 +20,7 @@ const Schedules: React.FC<IProps> = ({ title, value }) => {
 
   const checkRoles = () => {
     console.log(user.roles)
-    return user.roles && user.roles.some(role => role.name == 'ROLE_USER');
+    return user.roles && user.roles.some(role => role.name == 'ROLE_CLIENT');
   }
 
   const handleClick = () => {
@@ -30,11 +30,11 @@ const Schedules: React.FC<IProps> = ({ title, value }) => {
     }
 
     if(checkRoles()) {
-      setIsOpen(!isOpen);
+      window.location.href = '/agendar';
       return;
     }
     
-    window.location.href = '/agendar';
+    setIsOpen(!isOpen);
 
   }
 
